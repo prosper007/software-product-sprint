@@ -1,9 +1,40 @@
+body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color:#f1f0f087;
+}
+
 #content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
+  height: 100%;
+}
+
+#splash-screen {
+    height: 90vh;
+    display: flex;
+    padding: 0 2em;
+    align-items: center;
+}
+
+.card-container {
+    display: flex;
+    border-radius: 1em;
+    box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,0.2);
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#container-text {
+    padding-right: 3em;
 }
 
 #greeting-container {
   margin-top: 20px;
+}
+
+#portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
