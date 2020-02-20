@@ -10,7 +10,7 @@
     <div id="content">
       <div id="splash-screen">
         <div class="card-container">
-          <span class="about-me-pic">
+          <span id="about-me-pic">
             <img src="/images/prosper_animoji.png">
           </span>
           <span class="container-text">
@@ -26,11 +26,26 @@
       </div>
       <div id="portfolio">
         <h3>Some things I've built</h3>
-        <div class="card-container">
-          <img class="image" />
+        <div class="card-container top-margin">
+          <span class="card-image" id="yelpcamp">
+            <img class="image" src="/images/yelpcamp.png">
+          </span>
           <span class="container-text">
-            <h4 class="project-name">Project</h4>
-            <p class="project-description">description</p>
+            <h4 class="project-name">YelpCamp</h4>
+            <p class="project-description">YelpCamp is a like Yelp but for campgrounds. Users can signup, post campgrounds and comment on them. It was built with Node.js, Express and MongoDB</p>
+          </span>
+        </div>
+
+        <div class="card-container top-margin">
+          <span class="card-image" id="react-notes">
+            <img class="image" src="/images/react_notes.png">
+          </span>
+          <span class="container-text">
+            <h4 class="project-name">React Notes</h4>
+            <p class="project-description">
+              React Notes is basically a Google Keep knock off. It was built with React and a Realtime Firebase Database. 
+              Updates to notes are made in real time across all connected clients like in Google Docs!
+            </p>
           </span>
         </div>
       </div>
