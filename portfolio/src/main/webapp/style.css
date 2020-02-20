@@ -1,12 +1,11 @@
 body{
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-image: url(/images/grey.jpg);
-    background-size: contain;
-    background-repeat: repeat;
-    background-attachment: fixed;
-    /* background-color:#f1f0f087; */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url(/images/grey.jpg);
+  background-size: contain;
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 #content {
@@ -14,60 +13,65 @@ body{
 }
 
 #splash-screen {
-    height: 90vh;
-    display: flex;
-    padding: 0 2em;
-    align-items: center;
+  height: 90vh;
+  display: flex;
+  padding: 0 2em;
+  align-items: center;
 }
 
 .card-container {
-    display: flex;
-    border-radius: 1em;
-    box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,0.2);
-    background-color: white;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  border-radius: 1em;
+  box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,0.2);
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container-text {
-    padding-right: 2em;
-    padding-left: 1em;
+  padding-right: 2em;
+  padding-left: 1em;
 }
 
 #greeting-container {
   margin-top: 20px;
 }
 
-#portfolio {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 2em;
+#portfolio, #contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2em;
 }
 
 .card-image{
-    height: 27em;
-    width: 60em;
-    padding: 0.5em;
-    display: flex;
-    justify-content: space-between;
+  height: 27em;
+  width: 60em;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
 }
 
 .image{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 95%;
-    height: 100%;
-    border-radius: 0.8em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  height: 100%;
+  border-radius: 0.8em;
 }
 
 .half-image{
-    width: 48%;
-    height: 100%;
-    border-radius: 0.8em;
+  width: 48%;
+  height: 100%;
+  border-radius: 0.8em;
 }
 
 .top-margin{
-    margin-top: 5em;
+  margin-top: 5em;
+}
+
+.project-links{
+  display: flex;
+  justify-content: space-between;
 }
