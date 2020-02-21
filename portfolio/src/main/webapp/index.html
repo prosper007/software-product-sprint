@@ -2,17 +2,128 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Prosper's Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/d332baa62f.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </head>
   <body>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+      <div id="splash-screen">
+        <div class="card-container">
+          <span id="about-me-pic">
+            <img src="/images/prosper_animoji.png">
+          </span>
+          <span class="container-text">
+            <h2 id="banner">Hello! I'm Prosper</h2>
+            <p id="about-me-text">
+              Welcome to my site! I'm a software developer and I love building things with technology. 
+              I build web apps, Android apps and I dabble in other fun tech stuff. I love playing video games
+              and hanging out with my friends. Check out some of the things I've built and feel free to get in touch.
+              We could be friends!
+            </p>
+          </span>
+        </div>
+      </div>
+      <div id="portfolio">
+        <h3 id="portfolio-header">Some things I've built</h3>
+        <div class="card-container top-margin">
+          <span class="card-image">
+            <img class="image" src="/images/yelpcamp.png">
+          </span>
+          <span class="container-text">
+            <h4 class="project-name">YelpCamp</h4>
+            <p class="project-description">
+              YelpCamp is like Yelp but for campgrounds. Users can signup, post campgrounds and comment on them. 
+              It was built with Node.js, Express and MongoDB.
+            </p>
+            <div class="project-links">
+              <a class="view-app-link"
+                  href="https://yelpcamp001.herokuapp.com/" 
+                  target="_blank">
+                View App
+              </a>
+              <a class="view-repo-link" 
+                  href="https://github.com/prosper007/YelpCamp"
+                  target="_blank">
+                View App Repo on Github
+              </a>
+            </div>
+          </span>
+        </div>
+
+        <div class="card-container top-margin">
+          <span class="card-image">
+            <img class="image" src="/images/react_notes.png">
+          </span>
+          <span class="container-text">
+            <h4 class="project-name">React Notes</h4>
+            <p class="project-description">
+              React Notes is basically a Google Keep knock off. Updates to notes are made in real time across all 
+              connected clients like in Google Docs! It was built with React and a Realtime Firebase Database.  
+            </p>
+            <div class="project-links">
+              <a class="view-app-link" 
+                  href="http://prosper-react-notes.surge.sh/" 
+                  target="_blank">
+                View App
+              </a>
+              <a class="view-repo-link" 
+                  href="https://github.com/prosper007/react-notes"
+                  target="_blank">
+                View App Repo on Github
+              </a>
+            </div>
+          </span>
+        </div>
+
+        <div class="card-container top-margin">
+          <span class="card-image">
+            <img class="half-image" src="/images/quake_report1.jpg">
+            <img class="half-image" src="/images/quake_report2.jpg">
+          </span>
+          <span class="container-text">
+            <h4 class="project-name">Quake Report</h4>
+            <p class="project-description">
+              Quake Report is an Android app that pulls earthquake data from USGS API and displays it 
+              in a nice, simple layout. Users can filter and sort the displayed earthquakes by magnitude
+              and time of occurence.
+            </p>
+            <div class="project-links">
+              <a class="view-app-link" 
+                  href="https://play.google.com/store/apps/details?id=com.prosper.android.quakereport" 
+                  target="_blank">
+                View App
+              </a>
+              <a class="view-repo-link" 
+                  href="https://github.com/prosper007/QuakeReport" 
+                  target="_blank">
+                View App Repo on Github
+              </a>
+            </div>
+          </span>
+        </div>
+      </div>
+      <div id="contact">
+        <h4 id="contact-header">Get in touch!</h4>
+        <div id="social-icons">
+          <a class="icon" 
+              href="mailto:onungwap@gmail.com" 
+              target="_blank">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a class="icon" 
+              href="https://github.com/prosper007" 
+              target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a class="icon" 
+              href="https://www.linkedin.com/in/chikezie-prosper-onungwa/" 
+              target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </body>
 </html>
