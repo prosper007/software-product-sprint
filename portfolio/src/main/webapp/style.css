@@ -146,3 +146,7 @@ body {
 .icon {
   color: unset;
 }
+
+.icon:hover{
+    color: #32a063e3;
+}
