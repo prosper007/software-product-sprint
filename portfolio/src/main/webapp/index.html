@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/d332baa62f.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="getGreeting()">
     <div id="content">
       <div id="splash-screen">
         <div class="card-container">
@@ -15,7 +15,7 @@
             <img src="/images/prosper_animoji.png">
           </span>
           <span class="container-text">
-            <h2 id="banner">Hello! I'm Prosper</h2>
+            <h2 id="banner"></h2>
             <p id="about-me-text">
               Welcome to my site! I'm a software developer and I love building things with technology. 
               I build web apps, Android apps and I dabble in other fun tech stuff. I love playing video games
@@ -27,31 +27,7 @@
       </div>
       <div id="portfolio">
         <h3 id="portfolio-header">Some things I've built</h3>
-        <div class="card-container top-margin">
-          <span class="card-image">
-            <img class="image" src="/images/yelpcamp.png">
-          </span>
-          <span class="container-text">
-            <h4 class="project-name">YelpCamp</h4>
-            <p class="project-description">
-              YelpCamp is like Yelp but for campgrounds. Users can signup, post campgrounds and comment on them. 
-              It was built with Node.js, Express and MongoDB.
-            </p>
-            <div class="project-links">
-              <a class="view-app-link"
-                  href="https://yelpcamp001.herokuapp.com/" 
-                  target="_blank">
-                View App
-              </a>
-              <a class="view-repo-link" 
-                  href="https://github.com/prosper007/YelpCamp"
-                  target="_blank">
-                View App Repo on Github
-              </a>
-            </div>
-          </span>
-        </div>
-
+        
         <div class="card-container top-margin">
           <span class="card-image">
             <img class="image" src="/images/react_notes.png">
@@ -70,6 +46,31 @@
               </a>
               <a class="view-repo-link" 
                   href="https://github.com/prosper007/react-notes"
+                  target="_blank">
+                View App Repo on Github
+              </a>
+            </div>
+          </span>
+        </div>
+
+        <div class="card-container top-margin">
+          <span class="card-image">
+            <img class="image" src="/images/yelpcamp.png">
+          </span>
+          <span class="container-text">
+            <h4 class="project-name">YelpCamp</h4>
+            <p class="project-description">
+              YelpCamp is like Yelp but for campgrounds. Users can signup, post campgrounds and comment on them. 
+              It was built with Node.js, Express and MongoDB.
+            </p>
+            <div class="project-links">
+              <a class="view-app-link"
+                  href="https://yelpcamp001.herokuapp.com/" 
+                  target="_blank">
+                View App
+              </a>
+              <a class="view-repo-link" 
+                  href="https://github.com/prosper007/YelpCamp"
                   target="_blank">
                 View App Repo on Github
               </a>
