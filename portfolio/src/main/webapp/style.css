@@ -41,7 +41,8 @@ body {
 }
 
 #portfolio, 
-#contact {
+#contact,
+#comments {
   display: flex;
   flex-direction: column;
   align-items: center;
