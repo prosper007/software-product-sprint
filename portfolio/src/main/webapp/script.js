@@ -28,7 +28,19 @@ function addRandomGreeting() {
 }
 
 async function getGreeting(){
-    const response = await fetch('/data');
-    const greeting = await response.text();
-    document.getElementById('banner').innerText = greeting;
+  const response = await fetch('/data');
+  const greetings = await response.json();
+  const commentsListElement = document.getElementById('comments-list');
+  greetings.forEach(message => {
+    commentsListElement.appendChild(
+      createListElement(message)
+    );
+  });
+}
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
