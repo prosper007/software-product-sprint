@@ -17,7 +17,7 @@
  */
 function addRandomGreeting() {
   const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+    ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
@@ -27,7 +27,7 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-async function getGreeting(){
+async function getComments(){
   const response = await fetch('/data');
   const greetings = await response.json();
   const commentsListElement = document.getElementById('comments-list');
