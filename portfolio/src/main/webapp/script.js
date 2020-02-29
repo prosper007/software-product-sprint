@@ -29,11 +29,11 @@ function addRandomGreeting() {
 
 async function getComments(){
   const response = await fetch('/data');
-  const greetings = await response.json();
+  const comments = await response.json();
   const commentsListElement = document.getElementById('comments-list');
-  greetings.forEach(message => {
+  comments.forEach(comment => {
     commentsListElement.appendChild(
-      createListElement(message)
+      createListElement(comment)
     );
   });
 }
