@@ -31,16 +31,28 @@ async function getComments(){
   const response = await fetch('/data');
   const comments = await response.json();
   const commentsListElement = document.getElementById('comments-list');
-  comments.forEach(comment => {
+  comments.forEach((comment, index) => {
     commentsListElement.appendChild(
-      createListElement(comment)
+      createCommentElement(comment, index)
     );
   });
 }
 
-/** Creates an <li> element containing text. */
-function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+function createCommentElement(commentObject, index) {
+  const commentElement = document.createElement('div');
+  commentElement.innerText = commentObject.comment;
+  commentElement.classList.add('comment');
+
+  const commenterElement = document.createElement('div');
+  commenterElement.innerText = commentObject.commenter;
+  commenterElement.classList.add('commenter');
+
+  const container = document.createElement('div');
+  container.appendChild(commenterElement);
+  container.appendChild(commentElement);
+
+  if(index % 2 == 1){
+    container.classList.add('drag-right');
+  }
+  return container;
 }

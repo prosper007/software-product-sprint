@@ -123,19 +123,34 @@
               target="_blank">
             <i class="fab fa-linkedin"></i>
           </a>
-        </div>
-      
-      
+        </div> 
       </div>
       <div id="comments">
         <h4 id="contact-header">Leave a comment!</h4>
-        <div class="card-container top-margin">
-          <div id="comments-list">
-            <form action="/data" method="POST">
-              <input type="text" name="comment">
-              <input type="submit" />
-            </form>
-          </div>
+        <div id="comments-container" class="card-container">
+          <form action="/data" method="POST" id="comment-form">
+            <div id="input-fields">
+              <input
+                id="name-input" 
+                class="comment-input" 
+                type="text" 
+                name="commenter" 
+                placeholder="Your name"
+              />
+              <input 
+                class="comment-input" 
+                type="text" 
+                name="comment" 
+                placeholder="Your comment"
+              />
+            </div>
+            <input 
+              class="view-app-link" 
+              type="submit" 
+              value="Add Comment"
+            />
+          </form>
+          <div id="comments-list" />
         </div>
       </div>
     </div>
