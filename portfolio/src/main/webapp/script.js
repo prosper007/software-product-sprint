@@ -31,6 +31,7 @@ async function getComments(){
   const response = await fetch('/data');
   const comments = await response.json();
   const commentsListElement = document.getElementById('comments-list');
+  console.log(comments);
   comments.forEach((comment, index) => {
     commentsListElement.appendChild(
       createCommentElement(comment, index)
@@ -39,9 +40,9 @@ async function getComments(){
 }
 
 /** Creates an <li> element containing text. */
-function createCommentElement(text, index) {
+function createCommentElement(commentObject, index) {
   const commentElement = document.createElement('div');
-  commentElement.innerText = text;
+  commentElement.innerText = commentObject.comment;
   commentElement.classList.add('comment');
   if(index % 2 == 1){
     commentElement.classList.add('drag-right');
