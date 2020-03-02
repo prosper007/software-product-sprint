@@ -39,13 +39,21 @@ async function getComments(){
   });
 }
 
-/** Creates an <li> element containing text. */
 function createCommentElement(commentObject, index) {
   const commentElement = document.createElement('div');
   commentElement.innerText = commentObject.comment;
   commentElement.classList.add('comment');
+
+  const commenterElement = document.createElement('div');
+  commenterElement.innerText = commentObject.commenter;
+  commenterElement.classList.add('commenter');
+
+  const container = document.createElement('div');
+  container.appendChild(commenterElement);
+  container.appendChild(commentElement);
+
   if(index % 2 == 1){
-    commentElement.classList.add('drag-right');
+    container.classList.add('drag-right');
   }
-  return commentElement;
+  return container;
 }

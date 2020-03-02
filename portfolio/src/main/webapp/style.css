@@ -207,7 +207,7 @@ input.view-app-link:hover {
   margin-left: auto;
 }
 
-#input-fields{
+#input-fields {
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -219,4 +219,10 @@ input.view-app-link:hover {
 
 #comment-form:focus-within #name-input {
   display: block;
+}
+
+.commenter {
+  font-size: 0.9em;
+  padding: 0 0 0.3em 0.3em;
+  color: #5f5a5a;
 }
