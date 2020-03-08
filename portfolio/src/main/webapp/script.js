@@ -56,3 +56,18 @@ function createCommentElement(commentObject, index) {
   }
   return container;
 }
+
+async function getLoginStatus() {
+  const response = await fetch('/login-status');
+  const authInfo = await response.json();
+  const commentForm = document.getElementById('comment-form');
+  const loginDiv = document.getElementById('login-div');
+  const loginLink = document.getElementById('login-link');
+  console.log(authInfo);
+  if(authInfo.isUserLoggedIn){
+    loginDiv.style.display = 'none';
+    commentForm.style.display = 'flex';
+  } else {
+    loginLink.href = authInfo.loginUrl;
+  }
+}
