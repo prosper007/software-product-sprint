@@ -62,12 +62,20 @@ async function getLoginStatus() {
   const authInfo = await response.json();
   const commentForm = document.getElementById('comment-form');
   const loginDiv = document.getElementById('login-div');
-  const loginLink = document.getElementById('login-link');
-  console.log(authInfo);
   if(authInfo.isUserLoggedIn){
     loginDiv.style.display = 'none';
     commentForm.style.display = 'flex';
+
+    // populate name input with previously entered name from Datastore
+    const nameInput = document.getElementById('name-input');
+    nameInput.value = authInfo.userName;
+    
+    // unhide and set logout link if logged in
+    const logoutLink = document.getElementById('logout-link');
+    logoutLink.style.display = 'flex';
+    logoutLink.href = authInfo.logoutUrl;
   } else {
+    const loginLink = document.getElementById('login-link');
     loginLink.href = authInfo.loginUrl;
   }
 }
