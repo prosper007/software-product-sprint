@@ -42,7 +42,8 @@ body {
 
 #portfolio, 
 #contact,
-#comments {
+#comments,
+#footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,7 +114,7 @@ body {
   margin-right: 1em;
   font-size: 1.1em;
 }
-input.view-app-link {
+.comment-btn-color {
   background-color: #2a70efe3;
 }
 
@@ -121,7 +122,7 @@ input.view-app-link {
   background-color: #4cb37ad6;
 }
 
-input.view-app-link:hover {
+.comment-btn-color:hover {
   background-color: #2a70efa6;
 }
 
@@ -140,7 +141,8 @@ input.view-app-link:hover {
   margin: 0 0;
 }
 
-#contact-header {
+#contact-header,
+#logout-link {
   color: #8e2929;
 }
 
@@ -176,12 +178,25 @@ input.view-app-link:hover {
   width: 90%;
   font-size: 1.2em;
 }
+#login-text {
+  font-size: 1.2em;
+  color: #a9a8a8;
+}
 
-#comment-form {
-  display: flex;
+#comment-form, 
+#login-div {
   justify-content: space-between;
   align-items: center;
   width: 95%;
+}
+
+#comment-form,
+#logout-link {
+  display: none;
+}
+
+#login-div {
+  display: flex;
 }
 
 #comments-list {

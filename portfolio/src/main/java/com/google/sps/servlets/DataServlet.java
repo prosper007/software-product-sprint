@@ -30,6 +30,8 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.Text;
 import com.google.sps.data.Comment;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -49,7 +51,9 @@ public class DataServlet extends HttpServlet {
       Text commenterAsText = (Text) entity.getProperty("commenter");
       String commenterAsString = commenterAsText.getValue();
 
-      Comment comment = new Comment(commentAsString, commenterAsString);
+      String email = (String) entity.getProperty("email");
+
+      Comment comment = new Comment(commentAsString, commenterAsString, email);
       comments.add(comment);
     }
     
@@ -61,6 +65,14 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    UserService userService = UserServiceFactory.getUserService();
+    if(!userService.isUserLoggedIn()){
+      response.sendRedirect("/");
+      return;
+    }
+
+    String email = userService.getCurrentUser().getEmail();
+
     String commentValue = request.getParameter("comment");
     
     if(isStringValid(commentValue)){
@@ -71,18 +83,29 @@ public class DataServlet extends HttpServlet {
       if(isStringValid(commenterValue)){
         commenter = new Text(commenterValue);
       } else {
-        commenter = new Text("Anonymous");
+        commenter = new Text(email);
       }
       
+      
+
       long timestamp = System.currentTimeMillis();
+
+      String id = userService.getCurrentUser().getUserId();
       
       Entity commentEntity = new Entity("Comment");
       commentEntity.setProperty("comment", comment);
       commentEntity.setProperty("commenter", commenter);
+      commentEntity.setProperty("email", email);
       commentEntity.setProperty("timestamp", timestamp);
+
+      Entity userEntity = new Entity("UserInfo", id);
+      userEntity.setProperty("id", id);
+      userEntity.setProperty("username", commenter);
+      userEntity.setProperty("email", email);
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       datastore.put(commentEntity);
+      datastore.put(userEntity);
     }
   
     response.sendRedirect("/index.html");

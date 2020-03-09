@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/d332baa62f.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </head>
-  <body onload="getComments()">
+  <body onload="getComments(); getLoginStatus()">
     <div id="content">
       <div id="splash-screen">
         <div class="card-container">
@@ -145,13 +145,24 @@
               />
             </div>
             <input 
-              class="view-app-link" 
+              class="view-app-link comment-btn-color" 
               type="submit" 
               value="Add Comment"
             />
           </form>
+          <div id="login-div">
+            <span id="login-text">
+              Please login to comment
+            </span>
+            <a id="login-link" class="view-app-link comment-btn-color">
+              Login
+            </a>
+          </div>
           <div id="comments-list" />
         </div>
+      </div>
+      <div id="footer">
+        <a id="logout-link" class="view-repo-link">Logout</a>
       </div>
     </div>
   </body>
