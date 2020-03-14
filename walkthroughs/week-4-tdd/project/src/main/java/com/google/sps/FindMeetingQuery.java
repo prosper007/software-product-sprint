@@ -36,27 +36,24 @@ public final class FindMeetingQuery {
       return Arrays.asList(TimeRange.WHOLE_DAY);
     }
     Collection<String> listOfAttendees = request.getAttendees();
-    Map<String, Collection<TimeRange>> mapOfAttendeeAvailableTimes = new HashMap<>();
-    
-    for(String attendee : listOfAttendees){
-      System.out.println(attendee);
-      Collection<TimeRange> availableTimesForAttendee = getAvailableTimesForAttendee(attendee, events);
-      mapOfAttendeeAvailableTimes.put(attendee, availableTimesForAttendee);
-    }
-    
-    // return findIntersectionOfAvailableTimes(mapOfAttendeeAvailableTimes);
+    List<TimeRange> unavailableTimes = getUnavailableTimesForAttendees(events, listOfAttendees);
 
-    throw new UnsupportedOperationException("TODO: Implement this method.");
+    return getAvailableTimesForAttendees(unavailableTimes);
   }
-
-  public Collection<TimeRange> getAvailableTimesForAttendee(String attendee, Collection<Event> events){
+  public List<TimeRange> getUnavailableTimesForAttendees(Collection<Event> events, Collection<String> listOfAttendees){
     List<TimeRange> unavailableTimes = new ArrayList<>();
-    for(Event event : events) {
-      Set<String> eventAttendees = event.getAttendees();
-      if(eventAttendees.contains(attendee)) {
-        unavailableTimes.add(event.getWhen());
+    for(String attendee : listOfAttendees) {
+      for(Event event : events) {
+        Set<String> eventAttendees = event.getAttendees();
+        if(eventAttendees.contains(attendee)) {
+          unavailableTimes.add(event.getWhen());
+        }
       }
     }
+    return unavailableTimes;
+  }
+
+  public Collection<TimeRange> getAvailableTimesForAttendees(List<TimeRange> unavailableTimes){
     int startTime = TimeRange.START_OF_DAY;
     Collections.sort(unavailableTimes, TimeRange.ORDER_BY_START);
     Collection<TimeRange> availableTimes = new ArrayList<>();
@@ -69,9 +66,11 @@ public final class FindMeetingQuery {
         startTime = unavailableTime.end();
       }
     }
+
     if(startTime != TimeRange.END_OF_DAY+1){
       availableTimes.add(TimeRange.fromStartEnd(startTime, TimeRange.END_OF_DAY, true));
     }
+    
     return availableTimes;
   }
 }
