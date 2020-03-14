@@ -42,7 +42,7 @@ public final class FindMeetingQuery {
     Collection<String> listOfAttendees = request.getAttendees();
     List<TimeRange> unavailableTimes = getUnavailableTimesForAttendees(events, listOfAttendees);
 
-    return getAvailableTimesForAttendees(unavailableTimes);
+    return getAvailableTimes(unavailableTimes, request.getDuration());
   }
   // returns a list of already existing commitments for all required attendees
   public List<TimeRange> getUnavailableTimesForAttendees(Collection<Event> events, Collection<String> listOfAttendees){
@@ -59,14 +59,17 @@ public final class FindMeetingQuery {
   }
 
   // returns all available times given already existing commitments
-  public Collection<TimeRange> getAvailableTimesForAttendees(List<TimeRange> unavailableTimes){
+  public Collection<TimeRange> getAvailableTimes(List<TimeRange> unavailableTimes, long requestDuration) {
     int startTime = TimeRange.START_OF_DAY;
     Collections.sort(unavailableTimes, TimeRange.ORDER_BY_START);
     Collection<TimeRange> availableTimes = new ArrayList<>();
     
     for(TimeRange unavailableTime : unavailableTimes) {
       if(startTime < unavailableTime.start()) {
-        availableTimes.add(TimeRange.fromStartEnd(startTime, unavailableTime.start(), false));
+        TimeRange availableTime = TimeRange.fromStartEnd(startTime, unavailableTime.start(), false);
+        if(availableTime.duration() >= requestDuration){
+          availableTimes.add(availableTime);
+        }
       }
       if(unavailableTime.end() > startTime){
         startTime = unavailableTime.end();
