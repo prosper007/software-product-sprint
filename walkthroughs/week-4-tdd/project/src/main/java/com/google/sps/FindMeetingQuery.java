@@ -26,20 +26,25 @@ import java.util.List;
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
+    // if there's no requested attendee, whole day is available
     if(request.getAttendees().isEmpty()){
       return Arrays.asList(TimeRange.WHOLE_DAY);
     }
+    // nobody has time to meet for more than a day
     if(request.getDuration() > TimeRange.WHOLE_DAY.duration()){
       return Arrays.asList();
     }
+    // if there're no already existing events, whole day is available, 
     if(events.isEmpty()){
       return Arrays.asList(TimeRange.WHOLE_DAY);
     }
+
     Collection<String> listOfAttendees = request.getAttendees();
     List<TimeRange> unavailableTimes = getUnavailableTimesForAttendees(events, listOfAttendees);
 
     return getAvailableTimesForAttendees(unavailableTimes);
   }
+  // returns a list of already existing commitments for all required attendees
   public List<TimeRange> getUnavailableTimesForAttendees(Collection<Event> events, Collection<String> listOfAttendees){
     List<TimeRange> unavailableTimes = new ArrayList<>();
     for(String attendee : listOfAttendees) {
@@ -53,12 +58,13 @@ public final class FindMeetingQuery {
     return unavailableTimes;
   }
 
+  // returns all available times given already existing commitments
   public Collection<TimeRange> getAvailableTimesForAttendees(List<TimeRange> unavailableTimes){
     int startTime = TimeRange.START_OF_DAY;
     Collections.sort(unavailableTimes, TimeRange.ORDER_BY_START);
     Collection<TimeRange> availableTimes = new ArrayList<>();
     
-    for(TimeRange unavailableTime: unavailableTimes) {
+    for(TimeRange unavailableTime : unavailableTimes) {
       if(startTime < unavailableTime.start()) {
         availableTimes.add(TimeRange.fromStartEnd(startTime, unavailableTime.start(), false));
       }
